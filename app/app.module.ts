@@ -1,3 +1,4 @@
+import { ToastrService } from './common/toastr.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -21,7 +22,8 @@ import { EventService } from './events/shared/event.service';
         EventsAppComponent
     ],
     providers: [
-        EventService
+        EventService,
+        ToastrService
     ]
 })
 export class AppModule {
