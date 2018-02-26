@@ -13,6 +13,7 @@ import { Error404Component } from './errors/404.component';
 import { EventService } from './events/shared/event.service';
 import { ToastrService } from './common/toastr.service';
 import { EventRouteActivator } from './events/events-list/event-details/event-route-activator.component';
+import { EventsListResolver } from './events/events-list/events-list-resolver.service';
 
 import { appRoutes } from './routes';
 
@@ -37,6 +38,7 @@ import { appRoutes } from './routes';
         EventService,
         ToastrService,
         EventRouteActivator,
+        EventsListResolver,
         { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
     ]
 })
