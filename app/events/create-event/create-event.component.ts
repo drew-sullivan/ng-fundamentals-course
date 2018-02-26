@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
     styleUrls: ['app/events/create-event/create-event.component.css']
 })
 export class CreateEventComponent {
+    isDirty: boolean = true;
 
     constructor(private router: Router) { }
 
