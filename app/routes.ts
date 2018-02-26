@@ -1,12 +1,16 @@
-import { CreateEventComponent } from './events/create-event/create-event.component';
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
+
+import { Error404Component } from './errors/404.component';
+import { CreateEventComponent } from './events/create-event/create-event.component';
 import { EventDetailsComponent } from './events/events-list/event-details/event-details.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
+import { EventRouteActivator } from './events/events-list/event-details/event-route-activator.component';
 
 export const appRoutes: Routes = [
     { path: 'events', component: EventsListComponent },
     { path: 'events/new', component: CreateEventComponent }, //must come before /events/:id
-    { path: 'events/:id', component: EventDetailsComponent },
+    { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] },
+    { path: '404', component: Error404Component },
     { path: '', redirectTo: '/events', pathMatch: 'full' }
 ]
