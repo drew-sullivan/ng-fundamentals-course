@@ -36,9 +36,12 @@ import { appRoutes } from './routes';
     providers: [
         EventService,
         ToastrService,
-        EventRouteActivator
+        EventRouteActivator,
+        { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
     ]
 })
-export class AppModule {
+export class AppModule { }
 
+function checkDirtyState() {
+    return false;
 }
