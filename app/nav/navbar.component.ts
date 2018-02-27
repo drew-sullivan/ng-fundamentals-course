@@ -1,3 +1,4 @@
+import { AuthService } from './../user/auth/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
     styleUrls: ['app/nav/navbar.component.css']
 })
 export class NavbarComponent {
+    constructor(private authService: AuthService) { };
 
 }

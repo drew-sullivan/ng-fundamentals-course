@@ -11,6 +11,7 @@ import { EventService,
          EventThumbnailComponent,
          EventsListComponent,
         } from './events/index';
+import { AuthService } from './user/auth/auth.service';
 import { EventsAppComponent } from './events-app.component';
 import { ToastrService } from './common/toastr.service';
 import { appRoutes } from './routes';
@@ -37,6 +38,7 @@ import { appRoutes } from './routes';
         ToastrService,
         EventRouteActivator,
         EventsListResolver,
+        AuthService,
         { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
     ]
 })
