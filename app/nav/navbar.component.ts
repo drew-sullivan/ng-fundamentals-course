@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
     styleUrls: ['app/nav/navbar.component.css']
 })
 export class NavbarComponent {
-    constructor(private authService: AuthService) { };
+    constructor(private auth: AuthService) { };
 
 }
