@@ -6,13 +6,13 @@
         <div class="form-group" [ngClass]="{'error' : !isValidFirstName() }">
             <label for="firstName">First Name:</label>
             <em *ngIf="!isValidFirstName() && profileForm.controls.firstName.errors.required">Required</em>
-            <em *ngIf="!isValidFirstName() && profileForm.controls.firstName.errors.pattern">Must only contain letters</em>
+            <em *ngIf="!isValidFirstName() && profileForm.controls.firstName.errors.pattern">Letters only, please!</em>
             <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name..." />
         </div>
         <div class="form-group" [ngClass]="{'error' : !isValidLastName() }">
             <label for="lastName">Last Name:</label>
             <em *ngIf="!isValidLastName() && profileForm.controls.lastName.errors.required">Required</em>
-            <em *ngIf="!isValidLastName() && profileForm.controls.lastName.errors.pattern">Must only contain letters</em>
+            <em *ngIf="!isValidLastName() && profileForm.controls.lastName.errors.pattern">Letters only, please!</em>
             <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Last Name..." />
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
