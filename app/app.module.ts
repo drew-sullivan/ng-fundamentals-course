@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
-
 import { EventService,
          EventRouteActivator,
          EventsListResolver,
@@ -12,10 +11,8 @@ import { EventService,
          EventThumbnailComponent,
          EventsListComponent,
         } from './events/index';
-
 import { EventsAppComponent } from './events-app.component';
 import { ToastrService } from './common/toastr.service';
-
 import { appRoutes } from './routes';
 
 @NgModule({
