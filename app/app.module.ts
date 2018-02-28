@@ -16,7 +16,7 @@ import { EventService,
         } from './events/index';
 import { AuthService } from './user/auth/auth.service';
 import { EventsAppComponent } from './events-app.component';
-import { ToastrService } from './common/toastr.service';
+import { ToastrService, CollapsibleWellComponent } from './common/index';
 import { appRoutes } from './routes';
 
 @NgModule({
@@ -35,7 +35,8 @@ import { appRoutes } from './routes';
         NavbarComponent,
         Error404Component,
         CreateSessionComponent,
-        SessionListComponent
+        SessionListComponent,
+        CollapsibleWellComponent
     ],
     bootstrap: [
         EventsAppComponent
