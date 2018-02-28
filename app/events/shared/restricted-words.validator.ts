@@ -1,6 +1,11 @@
 import { FormControl } from '@angular/forms';
 
-export function restrictedWords(words: string[]) {
+const RESTRICTED_WORDS = [
+    'foo',
+    'bar'
+]
+
+export function restrictedWords(words: string[] = RESTRICTED_WORDS) {
     return (control: FormControl): any => {
         if (!words) {
             return null;
