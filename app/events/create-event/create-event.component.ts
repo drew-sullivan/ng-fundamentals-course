@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
     styleUrls: ['app/events/create-event/create-event.component.css', 'app/user/profile/profile.component.css']
 })
 export class CreateEventComponent {
+
     isDirty: boolean = true;
+    event: any;
 
     constructor(private router: Router, private eventService: EventService) { }
 
