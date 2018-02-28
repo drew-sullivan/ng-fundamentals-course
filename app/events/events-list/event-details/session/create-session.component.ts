@@ -1,4 +1,4 @@
-import { ISession } from './../../../shared/event.model';
+import { ISession, restrictedWords } from './../../../shared/index';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -21,7 +21,7 @@ export class CreateSessionComponent implements OnInit {
         this.presenter = new FormControl('', reqd);
         this.duration = new FormControl('', reqd);
         this.level = new FormControl('', reqd);
-        this.abstract = new FormControl('', [reqd, Validators.maxLength(400)]);
+        this.abstract = new FormControl('', [reqd, Validators.maxLength(400), restrictedWords(['foo', 'bar'])]);
 
         this.newSessionForm = new FormGroup({
             name: this.name,
