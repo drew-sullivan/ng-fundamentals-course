@@ -1,3 +1,4 @@
+import { EventDetailsComponent } from './../events-list/event-details/event-details.component';
 import { IEvent } from './event.model';
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs/RX';
@@ -23,6 +24,11 @@ export class EventService {
       event.id = 999;
       event.session = [];
       EVENTS.push(event);
+    }
+
+    updateEvent(event: any) {
+      let index = EVENTS.findIndex(x => x.id = event.id);
+      EVENTS[index] = event;
     }
 }
 
