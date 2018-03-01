@@ -17,8 +17,10 @@ import { EventService,
         } from './events/index';
 import { AuthService } from './user/auth/auth.service';
 import { EventsAppComponent } from './events-app.component';
-import { ToastrService, CollapsibleWellComponent } from './common/index';
+import { TOASTR_TOKEN, Toastr, CollapsibleWellComponent } from './common/index';
 import { appRoutes } from './routes';
+
+declare let toastr: Toastr;
 
 @NgModule({
     imports: [
@@ -45,10 +47,10 @@ import { appRoutes } from './routes';
     ],
     providers: [
         EventService,
-        ToastrService,
         EventRouteActivator,
         EventsListResolver,
         AuthService,
+        { provide: TOASTR_TOKEN, useValue: toastr },
         { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
     ]
 })

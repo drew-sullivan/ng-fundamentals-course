@@ -1,4 +1,3 @@
-import { ISession } from './../../../shared/event.model';
 import { ISession } from './../../../shared/index';
 import { Component, Input, OnChanges } from '@angular/core';
 
