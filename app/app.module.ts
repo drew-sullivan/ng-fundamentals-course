@@ -1,3 +1,4 @@
+import { ModalTriggerDirective } from './common/modal-trigger.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,7 +22,8 @@ import { TOASTR_TOKEN,
          Toastr,
          CollapsibleWellComponent,
          JQ_TOKEN,
-         SimpleModalComponent } from './common/index';
+         SimpleModalComponent,
+         ModalTriggerDirective } from './common/index';
 import { appRoutes } from './routes';
 
 declare let toastr: Toastr;
@@ -46,7 +48,8 @@ declare let jQuery: Object;
         SessionListComponent,
         CollapsibleWellComponent,
         DurationPipe,
-        SimpleModalComponent
+        SimpleModalComponent,
+        ModalTriggerDirective
     ],
     bootstrap: [
         EventsAppComponent
