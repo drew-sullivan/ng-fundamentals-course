@@ -2,54 +2,61 @@ import { EventDetailsComponent } from './../events-list/event-details/event-deta
 import { IEvent, ISession } from './event.model';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Subject, Observable } from 'rxjs/RX';
+import { Http, Response } from '@angular/http';
 
 @Injectable()
 export class EventService {
 
-    getEvents(): Observable<IEvent[]>  {  
-      //simulate async getter
-      let subject = new Subject<IEvent[]>();
-      setTimeout(() => { 
-        subject.next(EVENTS);
-        subject.complete();
-      }, 1);
-      return subject; 
-    }
+  constructor(private http: Http) { }
 
-    getEvent(id: number): IEvent { 
-      return EVENTS.find(event => event.id === id);
-    }
+  getEvents(): Observable<IEvent[]>  {  
+    return this.http.get("/api/events").map((response: Response)
+    => {
+      return <IEvent[]>response.json();
+    }).catch(this.handleError);
+  }
 
-    saveEvent(event: any) {
-      event.id = 999;
-      event.session = [];
-      EVENTS.push(event);
-    }
+  getEvent(id: number): Observable<IEvent> { 
+    return this.http.get(`/api/events/${id}`).map((response: Response)
+    => {
+      return <IEvent>response.json();
+    }).catch(this.handleError);
+  }
 
-    updateEvent(event: any) {
-      let index = EVENTS.findIndex(x => x.id = event.id);
-      EVENTS[index] = event;
-    }
+  saveEvent(event: any) {
+    event.id = 999;
+    event.session = [];
+    EVENTS.push(event);
+  }
 
-    searchSessions(searchTerm: string) {
-      let term = searchTerm.toLocaleLowerCase();
-      let results: ISession[] = []; 
+  updateEvent(event: any) {
+    let index = EVENTS.findIndex(x => x.id = event.id);
+    EVENTS[index] = event;
+  }
 
-      EVENTS.forEach(event => {
-        let matchingSessions = event.sessions.filter(session =>
-          session.name.toLocaleLowerCase().indexOf(term) > -1);
-        matchingSessions = matchingSessions.map((session: any) => {
-          session.eventId = event.id;
-          return session;
-        });
-        results = results.concat(matchingSessions);
+  searchSessions(searchTerm: string) {
+    let term = searchTerm.toLocaleLowerCase();
+    let results: ISession[] = []; 
+
+    EVENTS.forEach(event => {
+      let matchingSessions = event.sessions.filter(session =>
+        session.name.toLocaleLowerCase().indexOf(term) > -1);
+      matchingSessions = matchingSessions.map((session: any) => {
+        session.eventId = event.id;
+        return session;
       });
-      let emitter = new EventEmitter(true); //true means async
-      setTimeout(() => {
-        emitter.emit(results);
-      }, 1);
-      return emitter;
-    }
+      results = results.concat(matchingSessions);
+    });
+    let emitter = new EventEmitter(true); //true means async
+    setTimeout(() => {
+      emitter.emit(results);
+    }, 1);
+    return emitter;
+  }
+
+  private handleError(error: Response) {
+    return Observable.throw(error.statusText);
+  }
 }
 
 const EVENTS: IEvent[] = [

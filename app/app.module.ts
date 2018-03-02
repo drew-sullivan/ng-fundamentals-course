@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
+import { HttpModule } from '@angular/http';
 import { EventService,
-         EventRouteActivator,
          EventsListResolver,
          EventDetailsComponent,
          CreateEventComponent,
@@ -16,6 +16,8 @@ import { EventService,
          DurationPipe,
          UpvoteComponent,
          VoterService,
+         LocationValidator,
+         EventResolver
         } from './events/index';
 import { AuthService } from './user/auth/auth.service';
 import { EventsAppComponent } from './events-app.component';
@@ -35,6 +37,7 @@ declare let jQuery: Object;
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        HttpModule,
         RouterModule.forRoot(appRoutes)
     ],
     declarations: [
@@ -51,14 +54,15 @@ declare let jQuery: Object;
         DurationPipe,
         SimpleModalComponent,
         ModalTriggerDirective,
-        UpvoteComponent
+        UpvoteComponent,
+        LocationValidator, 
+        EventResolver
     ],
     bootstrap: [
         EventsAppComponent
     ],
     providers: [
         EventService,
-        EventRouteActivator,
         EventsListResolver,
         AuthService,
         VoterService,
